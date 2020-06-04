@@ -20,9 +20,12 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+    - name: Install nodeJS
+      uses: actions/setup-node@v2-beta
+      with:
+        node_version: 12 
 
-    # Runs a single command using the runners shell
-    - name: install surge
+    - name: Install Surge
       run: npm install -g surge
     - name: Run Surge
       run: surge ./Bostcampwapp.surge.sh --token ${{secrets.SURGE_TOKEN}} 
